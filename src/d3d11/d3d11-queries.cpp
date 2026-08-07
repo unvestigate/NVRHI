@@ -87,7 +87,7 @@ bool Device::pollEventQuery(IEventQuery* _query)
 
     const HRESULT hr = m_Context.immediateContext->GetData(query->query.Get(), nullptr, 0, D3D11_ASYNC_GETDATA_DONOTFLUSH);
 
-    if (SUCCEEDED(hr))
+    if (hr == S_OK)
     {
         query->resolved = true;
         return true;
@@ -183,7 +183,7 @@ bool Device::pollTimerQuery(ITimerQuery* _query)
 
     const HRESULT hr = m_Context.immediateContext->GetData(query->disjoint.Get(), nullptr, 0, D3D11_ASYNC_GETDATA_DONOTFLUSH);
 
-    if (SUCCEEDED(hr))
+    if (hr == S_OK)
     {
         // note: we don't mark this as resolved since we need to read data back and compute timing info
         // this is done in getTimerQueryTimeMS
