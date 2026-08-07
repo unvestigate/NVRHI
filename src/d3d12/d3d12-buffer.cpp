@@ -129,7 +129,7 @@ namespace nvrhi::d3d12
                 break;
         }
 
-        if (d.isAccelStructStorage)
+        if (d.isAccelStructStorage && m_EnhancedBarriersSupported)
         {
             resourceDesc.Flags |= D3D12_RESOURCE_FLAG_RAYTRACING_ACCELERATION_STRUCTURE;
         }
